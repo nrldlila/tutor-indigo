@@ -17,6 +17,9 @@
         .courses-listing {
             letter-spacing: -.32em;
             margin: 0 -2.5%;
+            @media only screen and (min-width: $big-screen) {
+                margin: 0 -1.5%;
+            }
             li {
                 letter-spacing: normal;
                 float: none !important;
@@ -30,6 +33,10 @@
                 }
                 @include media-breakpoint-up(md) {
                     width: 28.33% !important;
+                }
+                @media only screen and (min-width: $big-screen) {
+                    width: calc(25% - 3%) !important;
+                    margin: 0 1.5% 25px !important;
                 }
                 .course {
                     margin: 0;
@@ -107,7 +114,7 @@
                             border-top: 1px solid #ECF0F4;
                             padding: 10px 20px;
                             margin: 0 -20px;
-                            color: #6B7280;
+                            color: #515661;
                             font-size: 14px;
                             line-height: 20px;
                             svg {
@@ -229,7 +236,7 @@
             min-height: auto;
             width: 100%;
             float: none;
-            color: #6B7280;
+            color: #515661;
         }
     }
 }

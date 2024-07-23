@@ -20,7 +20,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     "defaults": {
         "VERSION": __version__,
         "WELCOME_MESSAGE": "The place for all your online learning",
-        "PRIMARY_COLOR": "#3b85ff",  # cool blue
+        "PRIMARY_COLOR": "#15376D",  # Indigo
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
@@ -28,7 +28,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
             {"title": "About Us", "url": "/about"},
             {"title": "Blog", "url": "/blog"},
             {"title": "Donate", "url": "/donate"},
-            {"title": "Terms of Sevice", "url": "/tos"},
+            {"title": "Terms of Service", "url": "/tos"},
             {"title": "Privacy Policy", "url": "/privacy"},
             {"title": "Help", "url": "/help"},
             {"title": "Contact Us", "url": "/contact"},
@@ -106,9 +106,8 @@ hooks.Filters.ENV_PATCHES.add_items(
             "mfe-dockerfile-post-npm-install-learning",
             """
 RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
-RUN npm install '@edx/frontend-component-header@npm:@edly-io/indigo-frontend-component-header@^1.0.0'
-RUN npm install '@edx/frontend-component-footer@npm:@edly-io/indigo-frontend-component-footer@^1.0.0'
 """,
+            # remove indigo-header and indigo-footer due to incompatible version deps of MFEs
         ),
         (
             "mfe-dockerfile-post-npm-install-authn",
@@ -116,21 +115,32 @@ RUN npm install '@edx/frontend-component-footer@npm:@edly-io/indigo-frontend-com
 RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
-        # Tutor-Indigo v2.1 targets the styling updations in discussions and learner-dashboard MFE
+        # Tutor-Indigo v2.1 targets the styling updates in discussions and learner-dashboard MFE
         # brand-openedx is related to styling updates while others are for header and footer updates
         (
             "mfe-dockerfile-post-npm-install-discussions",
             """
 RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
-RUN npm install '@edx/frontend-component-header@npm:@edly-io/indigo-frontend-component-header@^1.0.0'
-RUN npm install '@edx/frontend-component-footer@npm:@edly-io/indigo-frontend-component-footer@^1.0.0'
 """,
+            # remove indigo-header and indigo-footer due to incompatible version deps of MFEs
         ),
         (
             "mfe-dockerfile-post-npm-install-learner-dashboard",
             """
 RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
-RUN npm install '@edx/frontend-component-footer@npm:@edly-io/indigo-frontend-component-footer@^1.0.0'
+""",
+            # remove indigo-footer due to incompatible version deps of MFEs
+        ),
+        (
+            "mfe-dockerfile-post-npm-install-profile",
+            """
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
+""",
+        ),
+        (
+            "mfe-dockerfile-post-npm-install-account",
+            """
+RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^1.0.0'
 """,
         ),
     ]

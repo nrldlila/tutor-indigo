@@ -1,11 +1,14 @@
 // Include custom home
 section.home {
-    max-width: 1090px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 15px;
 }
 .home>header .title {
     background: none !important;
+}
+.home>header .outer-wrapper {
+    max-width: 100%;
 }
 .global-header .nav-links .secondary {
     .btn-holder {
@@ -61,7 +64,7 @@ section.home {
                     p {
                         font-size: 16px;
                         line-height: 20px;
-                        color: #6B7280;
+                        color: #515661;
                         font-style: normal;
                         margin: 0;
                     }
